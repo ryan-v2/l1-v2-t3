@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Logo from "../assets/wed_logo.png";
 import Image from "next/image";
-import { trpc } from "../utils/trpc";
 
 type TechnologyCardProps = {
   name: string;
@@ -46,7 +45,7 @@ const Home: NextPage = () => {
           />
           <TechnologyCard
             name="Minting ERC-20 and NFTs"
-            description="ERC-20 defines a fungible token standard that tokens implementers must adhere to while Non-fungible tokens (NFTs) are cryptographic assets on a blockchain with unique identification codes and metadata that distinguish them from each other."
+            description="ERC-20 is a fungible token standard that tokens implementers must adhere and non-fungible tokens (NFTs) are cryptographic assets on a blockchain with unique identification codes and metadata."
             documentation="https://ethereum.org/en/developers/docs/standards/tokens/"
             title="token standards"
           />
