@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Logo from "../assets/wed_logo.png";
 import Image from "next/image";
+import { trpc } from "../utils/trpc"
+import Link from "next/link";
 
 type TechnologyCardProps = {
   name: string;
@@ -11,7 +13,8 @@ type TechnologyCardProps = {
 };
 
 const Home: NextPage = () => {
-  //const hello = trpc.useQuery(["example.hello", { text: "from Ryan" }]);
+  // todo query db for user name and add logout
+  // const hello = trpc.useQuery(["example.hello", { text: "" }]);
 
   return (
     <>
@@ -21,9 +24,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.svg" />
       </Head>
 
-      <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
-        <Image className="p-4" src={Logo} alt="Where Eagles Dare logo"/>
-        <p className="text-2xl align-self-center text-gray-700">covers</p>
+      <main className="container mx-auto flex flex-col items-center justify-center max-h-screen p-2">
+        <div className="pt-4 flex align-self-center justify-end items-center w-full">
+          <span className="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-400 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+          <Link href="/api/auth/signin">Sign In</Link>
+          {/*hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>*/}
+          </span>
+        </div>
+        <Image loading="eager" src={Logo} alt="Where Eagles Dare logo"/>
         <div className="grid gap-6 pt-4 mt-4 text-center md:grid-cols-4 lg:w-3/3">
           <TechnologyCard
             name="Ethereum Blockchain"
@@ -50,9 +58,6 @@ const Home: NextPage = () => {
             title="token standards"
           />
         </div>
-        {/* <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
-          {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
-        </div> */}
       </main>
     </>
   );
@@ -70,7 +75,7 @@ const TechnologyCard = ({
       <p className="text-sm text-gray-600">{description}</p>
       {documentation && (
         <a
-          className="mt-3 text-sm underline text-violet-500 decoration-dotted underline-offset-2"
+          className="mt-3 text-sm underline text-blue-400 decoration-solid underline-offset-2"
           href={documentation}
           target="_blank"
           rel="noreferrer"
